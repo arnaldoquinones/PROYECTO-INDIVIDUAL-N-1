@@ -27,6 +27,8 @@ app=FastAPI()
 def index():
     return "Hola, bienvenido(a) a mi proyecto"
 
+
+
 @app.get('/desarrolladora/{desarrollador}')
 def developer(desarrollador: str):
     desarrollador_lower = desarrollador.lower()
@@ -234,7 +236,9 @@ def recomendacion_juego(id: int):
     sim_juegos = muestra['app_name'].iloc[sim_ind].values.tolist()
     return {f'juegos recomendados para {id}': list(sim_juegos)}
 
-
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)
 # Test
 # print("-----------------------------")
 # print(developer("Id Software"))
