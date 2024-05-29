@@ -28,9 +28,9 @@ def index():
     return "Hola, bienvenido(a) a mi proyecto"
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=10000)
+#if __name__ == "__main__":
+#    import uvicorn
+#    uvicorn.run(app, host="0.0.0.0", port=10000)
 
 @app.get('/desarrolladora/{desarrollador}')
 def developer(desarrollador: str):
