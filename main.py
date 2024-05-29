@@ -19,17 +19,18 @@ df_reviews = df_reviews.head(14000)
 df_reviews_coments = df_reviews_coments.head(14000)
 # uvicorn main:app --host 0.0.0.0 --port 10000
 
-app=FastAPI()
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=10000)
+
 # http://127.0.0.1:8000
+app=FastAPI()
 
 @app.get("/")
 def index():
     return "Hola, bienvenido(a) a mi proyecto"
 
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)
 
 @app.get('/desarrolladora/{desarrollador}')
 def developer(desarrollador: str):
