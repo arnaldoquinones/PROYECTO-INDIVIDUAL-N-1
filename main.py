@@ -20,7 +20,9 @@ df_reviews_coments = df_reviews_coments.head(14000)
 # uvicorn main:app --host 0.0.0.0 --port 10000
 
 app=FastAPI()
-
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)
 # http://127.0.0.1:8000
 
 @app.get("/")
@@ -236,9 +238,7 @@ def recomendacion_juego(id: int):
     sim_juegos = muestra['app_name'].iloc[sim_ind].values.tolist()
     return {f'juegos recomendados para {id}': list(sim_juegos)}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=10000)
+
 # Test
 # print("-----------------------------")
 # print(developer("Id Software"))
