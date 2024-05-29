@@ -8,15 +8,16 @@ from sklearn.metrics.pairwise        import linear_kernel
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # columnstouse=['item_id','playtime_forever','user_id']
-df_games = pd.read_parquet(r'D:\Users\Arnaldo\Desktop\SISTEMAS\SOYHENRY\CURSO\PROYECTOS\PROYECTO INDIVIDUAL I\RECURSADO\ARCHIVOS\DATAFRAMES\DATAFRAMES PARKET\df_games.parquet')
-df_items = pd.read_parquet(r'D:\Users\Arnaldo\Desktop\SISTEMAS\SOYHENRY\CURSO\PROYECTOS\PROYECTO INDIVIDUAL I\RECURSADO\ARCHIVOS\DATAFRAMES\DATAFRAMES PARKET\df_items.parquet') # columns=columnstouse
-df_reviews = pd.read_parquet(r'D:\Users\Arnaldo\Desktop\SISTEMAS\SOYHENRY\CURSO\PROYECTOS\PROYECTO INDIVIDUAL I\RECURSADO\ARCHIVOS\DATAFRAMES\DATAFRAMES PARKET\df_reviews.parquet')
-df_reviews_coments = pd.read_parquet(r'D:\Users\Arnaldo\Desktop\SISTEMAS\SOYHENRY\CURSO\PROYECTOS\PROYECTO INDIVIDUAL I\RECURSADO\ARCHIVOS\DATAFRAMES\DATAFRAMES PARKET\df_reviews_coments.parquet')
+df_games = pd.read_parquet('df_games.parquet')
+df_items = pd.read_parquet('df_items.parquet') # columns=columnstouse
+df_reviews = pd.read_parquet('df_reviews.parquet')
+df_reviews_coments = pd.read_parquet('df_reviews_coments.parquet')
 
 # df_games = df_games.head(14000)
 # df_items = df_items.head(14000)
 # df_reviews = df_reviews.head(14000)
 # df_reviews_coments = df_reviews_coments.head(14000)
+# uvicorn main:app --host 0.0.0.0 --port 10000
 
 app=FastAPI()
 
@@ -205,6 +206,9 @@ df_games_final = df_games[game_columns]
 # Se hace un join entre df_games y df_UserItems utilizando 'item_id' como clave
 df_joined = pd.merge(df_games_final, df_reviews_coments[['item_id', 'review']], on='item_id', how='inner')
 
+# Se hace un join entre df_games y df_UserItems utilizando 'item_id' como clave
+df_joined = pd.merge(df_games_final, df_reviews_coments[['item_id', 'review']], on='item_id', how='inner')
+
 #Se crea una muestra para el modelo
 muestra = df_joined.head(20000)
 
@@ -217,6 +221,7 @@ cosine_similarity = linear_kernel( tdfid_matrix, tdfid_matrix)
 ####
 
 @app.get('/Recomendación_juegos/{id}')
+# Se crea la funcion de recomendación de 5 juegos recomendados para el juego ingresado.
 def recomendacion_juego(id: int):
     if id not in muestra['item_id'].values:
         return {'mensaje': 'No existe el id del juego'}
