@@ -13,10 +13,10 @@ df_items = pd.read_parquet('df_items.parquet') # columns=columnstouse
 df_reviews = pd.read_parquet('df_reviews.parquet')
 df_reviews_coments = pd.read_parquet('df_reviews_coments.parquet')
 
-# df_games = df_games.head(14000)
-# df_items = df_items.head(14000)
-# df_reviews = df_reviews.head(14000)
-# df_reviews_coments = df_reviews_coments.head(14000)
+df_games = df_games.head(14000)
+df_items = df_items.head(14000)
+df_reviews = df_reviews.head(14000)
+df_reviews_coments = df_reviews_coments.head(14000)
 # uvicorn main:app --host 0.0.0.0 --port 10000
 
 app=FastAPI()
