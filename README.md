@@ -15,7 +15,7 @@ Por último, en la fase final, nos concentramos en el núcleo del proyecto: el M
 Realizamos un proceso de Extracción, Transformación y Carga (ETL), donde recopilamos datos de diversas fuentes, los adaptamos según los criterios del proyecto y los guardamos en un lugar específico. Utilizamos herramientas como Python, Pandas y Numpy entre otras para llevar a cabo esta tarea.
 Realizamos un Análisis Exploratorio de Datos (EDA) para examinar interacciones y hallar tendencias. Recurrimos a herramientas como Numpy, Pandas, Matplotlib, Seaborn, Wordcloud, NLTK y scikit-learn.
 
-## Modelo de Machine Learning
+## MODELO MACHINE LEARNING
 
 Creamamos un sistema de Machine Learning para proporcionar recomendaciones de videojuegos personalizadas. Utilizamos métodos y algoritmos para analizar las tendencias de los usuarios y los datos de los juegos, con el objetivo de ofrecer recomendaciones adaptadas a cada usuario. El sistema fue entrenado con un conjunto de datos que contenía 14,000 registros.
 
